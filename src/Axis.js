@@ -121,7 +121,7 @@ export default class Axis extends Component {
 
     let xy = [0,0]
     if (options.orient === 'top')  xy = [0,-5]
-    if (options.orient === 'bottom') xy = [0,15]
+    if (options.orient === 'bottom') xy = [0,10]
     if (options.orient === 'left')  xy = [-15,-10]
     if (options.orient === 'right')  xy = [5,5]
 

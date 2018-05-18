@@ -186,17 +186,19 @@ export default class LineChart extends Component {
     let lines = _.map(
       chart.curves,
       function(c, i) {
-        const strokeWidthForCurve =
-          (typeof strokeWidth === 'function' && strokeWidth(c, i)) || strokeWidth;
+        const strokeWidthForCurve = i === 0 ? 
+          (typeof strokeWidth === 'function' && strokeWidth(c, i)) || strokeWidth : 0;
         const strokeDasharrayForCurve =
           (typeof strokeDasharray === 'function' && strokeDasharray(c, i)) || strokeDasharray;
-        const strokeOpacityForCurve =
-          (typeof strokeOpacity === 'function' && strokeOpacity(c, i)) || strokeOpacity;
+        const strokeOpacityForCurve = i === 0 ? 
+          (typeof strokeOpacity === 'function' && strokeOpacity(c, i)) || strokeOpacity : 0;
+
+        const color = i === 0 ? this.color(i) : "#FFF";
         return (
           <Path
             key={'lines' + i}
             d={c.line.path.print()}
-            stroke={this.color(i)}
+            stroke={color}
             strokeWidth={strokeWidthForCurve}
             strokeOpacity={strokeOpacityForCurve}
             fill="none"

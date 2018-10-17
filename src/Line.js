@@ -176,7 +176,7 @@ export default class LineChart extends Component {
       : true;
     let strokeWidth = typeof this.props.options.strokeWidth !== 'undefined'
       ? this.props.options.strokeWidth
-      : '1';
+      : 1;
     let strokeDasharray = typeof this.props.options.strokeDasharray !== 'undefined'
       ? this.props.options.strokeDasharray
       : [];
@@ -186,12 +186,9 @@ export default class LineChart extends Component {
     let lines = _.map(
       chart.curves,
       function(c, i) {
-        const strokeWidthForCurve = i !== 0 ? 
-          (typeof strokeWidth === 'function' && strokeWidth(c, i)) || strokeWidth : 0;
-        const strokeDasharrayForCurve =
-          (typeof strokeDasharray === 'function' && strokeDasharray(c, i)) || strokeDasharray;
-        const strokeOpacityForCurve = i !== 0 ? 
-          (typeof strokeOpacity === 'function' && strokeOpacity(c, i)) || strokeOpacity : 0;
+        const strokeWidthForCurve = i !== 0 ? (typeof strokeWidth === 'function' ? strokeWidth(c, i) : strokeWidth) : 0;
+        const strokeDasharrayForCurve = typeof strokeDasharray === 'function' ? strokeDasharray(c, i) : strokeDasharray;
+        const strokeOpacityForCurve = i !== 0 ? (typeof strokeOpacity === 'function' ? strokeOpacity(c, i) : strokeOpacity) : 0;
 
         const color = i !== 0 ? this.color(i) : "#FFF";
         return (

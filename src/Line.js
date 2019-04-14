@@ -179,7 +179,7 @@ export default class LineChart extends Component {
       : 1;
     let strokeDasharray = typeof this.props.options.strokeDasharray !== 'undefined'
       ? this.props.options.strokeDasharray
-      : [];
+      : [0,0];
     let strokeOpacity = typeof this.props.options.strokeOpacity !== 'undefined'
       ? this.props.options.strokeOpacity
       : 1;
